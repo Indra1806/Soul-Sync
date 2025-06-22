@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Clock, Zap, Brain, Circle } from 'lucide-react';
-import type { Entity, Interaction } from '@/pages/Index';
+import type { Entity, Interaction } from '@/pages/Simulation';
 
 interface EvolutionTimelineProps {
   entities: Entity[];
