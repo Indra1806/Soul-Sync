@@ -8,6 +8,8 @@ import Landing from "./pages/Landing";
 import Simulation from "./pages/Simulation";
 import Tutorials from "./pages/Tutorials";
 import Learn from "./pages/Learn";
+import QuickStart from "./pages/QuickStart";
+import LearningPaths from "./pages/LearningPaths";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/simulation" element={<Simulation />} />
           <Route path="/tutorials" element={<Tutorials />} />
           <Route path="/learn" element={<Learn />} />
+          <Route path="/quickstart" element={<QuickStart />} />
+          <Route path="/learning-paths" element={<LearningPaths />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

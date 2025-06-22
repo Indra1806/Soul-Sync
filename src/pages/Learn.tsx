@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Brain, BookOpen, Play, Users, Zap, ArrowRight, Clock, Star } from 'lucide-react';
+import { Brain, BookOpen, Play, Users, Zap, ArrowRight, Clock, Star, Route }  from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -83,6 +82,28 @@ const Learn = () => {
             Master the art of digital consciousness creation through comprehensive learning paths, 
             interactive tutorials, and hands-on exploration.
           </p>
+
+          {/* Quick Navigation Cards */}
+          <div className="grid md:grid-cols-2 gap-6 mt-8 max-w-2xl mx-auto">
+            <Link to="/quickstart">
+              <Card className="bg-gradient-to-r from-cyan-500/10 to-purple-600/10 backdrop-blur-sm border border-cyan-400/30 hover:from-cyan-500/20 hover:to-purple-600/20 transition-all duration-300 group">
+                <CardContent className="p-6 text-center">
+                  <Play className="w-12 h-12 text-cyan-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-bold text-white mb-2">Quick Start</h3>
+                  <p className="text-gray-300 text-sm">Get up and running in minutes</p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link to="/learning-paths">
+              <Card className="bg-gradient-to-r from-purple-500/10 to-pink-600/10 backdrop-blur-sm border border-purple-400/30 hover:from-purple-500/20 hover:to-pink-600/20 transition-all duration-300 group">
+                <CardContent className="p-6 text-center">
+                  <Route className="w-12 h-12 text-purple-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-bold text-white mb-2">Learning Paths</h3>
+                  <p className="text-gray-300 text-sm">Structured learning journeys</p>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
         </div>
 
         <Tabs value={activeSection} onValueChange={setActiveSection} className="w-full">
@@ -145,10 +166,12 @@ const Learn = () => {
                           <span>{path.lessons} lessons</span>
                         </div>
                       </div>
-                      <Button className="w-full bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/30 text-cyan-300 hover:from-cyan-500/30 hover:to-purple-600/30">
-                        Start Path
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <Link to="/learning-paths">
+                        <Button className="w-full bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/30 text-cyan-300 hover:from-cyan-500/30 hover:to-purple-600/30">
+                          Start Path
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
                     </CardContent>
                   </Card>
                 ))}
@@ -182,10 +205,12 @@ const Learn = () => {
                             <span>4.8/5 rating</span>
                           </div>
                         </div>
-                        <Button className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white">
-                          Start Learning Path
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
+                        <Link to="/learning-paths">
+                          <Button className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white">
+                            Start Learning Path
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </CardContent>
@@ -223,9 +248,9 @@ const Learn = () => {
                       <span>Launch your first simulation</span>
                     </li>
                   </ol>
-                  <Link to="/simulation">
+                  <Link to="/quickstart">
                     <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white mt-4">
-                      Start Now
+                      Start Quick Guide
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
@@ -267,12 +292,20 @@ const Learn = () => {
           <div className="bg-gradient-to-r from-cyan-500/10 to-purple-600/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
             <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Creating?</h2>
             <p className="text-gray-300 mb-6">Apply what you've learned in our interactive simulation platform.</p>
-            <Link to="/simulation">
-              <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white px-8 py-4">
-                Go to Platform
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/quickstart">
+                <Button variant="outline" className="border-cyan-400/30 text-cyan-300 hover:bg-cyan-400/10">
+                  Quick Start Guide
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+              <Link to="/simulation">
+                <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white px-8 py-4">
+                  Go to Platform
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </main>
