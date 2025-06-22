@@ -1,6 +1,6 @@
 # 🧠 SoulSync – Simulate Post-Physical Consciousness
 
-![SoulSync](https://soul-sync.netlify.app/assets/logo-soulsync.png)
+![SoulSync](https://github.com/Indra1806/Soul-Sync/blob/main/public/Copilot_20250623_011524.png)
 
 **Simulate, evolve, and interact with digital minds across time and cognition.**  
 Built by [Indrasena Reddy](https://github.com/Indra1806), SoulSync is a speculative simulation platform for designing and exploring artificial consciousness through non-linear interactions, symbolic emotions, and memory-driven evolution.
