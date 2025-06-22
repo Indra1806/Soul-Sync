@@ -1,12 +1,14 @@
+
 import React, { useState, useEffect } from 'react';
 import { MindPatternBuilder } from '@/components/MindPatternBuilder';
 import { EntityInteractionBoard } from '@/components/EntityInteractionBoard';
 import { EvolutionTimeline } from '@/components/EvolutionTimeline';
 import { IntentTranslator } from '@/components/IntentTranslator';
+import OnboardingTour from '@/components/OnboardingTour';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
-import { Sparkles, Brain, Zap, Clock, Home } from 'lucide-react';
+import { Sparkles, Brain, Zap, Clock, Home, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export interface Entity {
@@ -38,6 +40,15 @@ const Simulation = () => {
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [activeTab, setActiveTab] = useState('builder');
   const [simulationActive, setSimulationActive] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  // Check if user is new (you might want to use localStorage or user preferences)
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem('soulsync-onboarding-completed');
+    if (!hasSeenOnboarding) {
+      setShowOnboarding(true);
+    }
+  }, []);
 
   // Initialize with sample entities
   useEffect(() => {
@@ -94,6 +105,20 @@ const Simulation = () => {
     setSimulationActive(!simulationActive);
   };
 
+  const handleOnboardingComplete = () => {
+    localStorage.setItem('soulsync-onboarding-completed', 'true');
+    setShowOnboarding(false);
+  };
+
+  const handleOnboardingSkip = () => {
+    localStorage.setItem('soulsync-onboarding-completed', 'true');
+    setShowOnboarding(false);
+  };
+
+  const startOnboarding = () => {
+    setShowOnboarding(true);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       {/* Animated background elements */}
@@ -120,17 +145,27 @@ const Simulation = () => {
               <span>Home</span>
             </Link>
           </div>
-          <Button 
-            onClick={toggleSimulation}
-            className={`${simulationActive ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'} text-white transition-all duration-300`}
-          >
-            <Zap className="w-4 h-4 mr-2" />
-            {simulationActive ? 'Pause Simulation' : 'Start Simulation'}
-          </Button>
+          <div className="flex items-center space-x-4">
+            <Button 
+              variant="outline"
+              onClick={startOnboarding}
+              className="border-cyan-400/30 text-cyan-300 hover:bg-cyan-400/10"
+            >
+              <HelpCircle className="w-4 h-4 mr-2" />
+              Help
+            </Button>
+            <Button 
+              onClick={toggleSimulation}
+              className={`${simulationActive ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'} text-white transition-all duration-300`}
+            >
+              <Zap className="w-4 h-4 mr-2" />
+              {simulationActive ? 'Pause Simulation' : 'Start Simulation'}
+            </Button>
+          </div>
         </div>
       </header>
 
-      {/* Main Content - keep existing tabs and functionality */}
+      {/* Main Content */}
       <main className="relative z-10 p-6 max-w-7xl mx-auto">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-4 bg-white/5 backdrop-blur-sm border border-white/10">
@@ -186,6 +221,13 @@ const Simulation = () => {
           </div>
         </Tabs>
       </main>
+
+      {/* Onboarding Tour */}
+      <OnboardingTour 
+        isActive={showOnboarding}
+        onComplete={handleOnboardingComplete}
+        onSkip={handleOnboardingSkip}
+      />
     </div>
   );
 };

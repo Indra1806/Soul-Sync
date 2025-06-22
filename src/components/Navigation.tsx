@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Brain, Home, BookOpen, Zap, Users } from 'lucide-react';
+import { Brain, Home, BookOpen, Zap, Users, GraduationCap } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -40,6 +40,15 @@ const Navigation = () => {
             >
               <Zap className="w-4 h-4" />
               <span>Platform</span>
+            </Link>
+            <Link 
+              to="/learn" 
+              className={`flex items-center space-x-1 transition-colors ${
+                isActive('/learn') ? 'text-cyan-400' : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              <GraduationCap className="w-4 h-4" />
+              <span>Learn</span>
             </Link>
             <Link 
               to="/tutorials" 
