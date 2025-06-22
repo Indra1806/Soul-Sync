@@ -3,6 +3,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Brain, Sparkles, Users, Zap, ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 const Landing = () => {
   return (
@@ -13,31 +15,7 @@ const Landing = () => {
         <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-400 to-blue-600 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
-      {/* Navigation */}
-      <nav className="relative z-10 p-6 backdrop-blur-sm bg-white/5 border-b border-white/10">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full flex items-center justify-center">
-              <Brain className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold text-white">SoulSync</span>
-          </div>
-          <div className="flex items-center space-x-6">
-            <Link to="/simulation" className="text-gray-300 hover:text-white transition-colors">
-              Platform
-            </Link>
-            <Link to="/tutorials" className="text-gray-300 hover:text-white transition-colors">
-              Tutorials
-            </Link>
-            <Button variant="outline" className="border-cyan-400/30 text-cyan-300 hover:bg-cyan-400/10">
-              Sign In
-            </Button>
-            <Button className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white">
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="relative z-10 px-6 py-20">
@@ -123,6 +101,8 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };
