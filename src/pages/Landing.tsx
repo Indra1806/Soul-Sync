@@ -45,10 +45,12 @@ const Landing = () => {
                 Start Creating
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg">
-              Watch Demo
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/tour">
+              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg">
+                Watch Demo
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </div>
 
           {/* Feature Cards */}

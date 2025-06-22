@@ -10,6 +10,7 @@ import Tutorials from "./pages/Tutorials";
 import Learn from "./pages/Learn";
 import QuickStart from "./pages/QuickStart";
 import LearningPaths from "./pages/LearningPaths";
+import Tour from "./pages/Tour";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/learn" element={<Learn />} />
           <Route path="/quickstart" element={<QuickStart />} />
           <Route path="/learning-paths" element={<LearningPaths />} />
+          <Route path="/tour" element={<Tour />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
